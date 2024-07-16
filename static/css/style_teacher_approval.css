@@ -1,0 +1,77 @@
+/*Google Font*/
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Lobster&family=Lobster+Two&family=Sniglet&display=swap');
+*{
+    box-sizing:border-box;
+}
+:root{
+    --Snigle-font:"Sniglet",cursive;
+    --Lobster:"Lobster",cursive;
+    --Lobster_two:"Lobster Two",cursive;
+    --Acme:"Acme",cursive;
+    --light-black:#2e2c2caf;
+    /* --bggradient:linear-gradient(to bottom, #11349c, #76f1f1); keep this gradient*/
+    --bggradient:linear-gradient(to bottom, #76f1f1, #11349c);
+    --light-gray:rgba(255,255,255,0.7);
+    /*--maingradient:linear-gradient(to right,#5CA0F2,#d1f8e4); Keep thos gradient it's nice*/
+    --maingradient:white;
+    --gradient1: -webkit-linear-gradient(left,#009FFD,#2A2A72)
+}
+html {
+    height: 100%;
+}
+body {
+    height: 100vh;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-y: hidden;
+}
+/* Text Color */
+.text1{
+    color: darkblue;
+    font-family: var(--Lobster_two);
+    font-weight: bold;
+}
+/* Text Align */
+.text-c {
+    text-align: center;
+}
+.text2{
+    font-family: var(--Acme);
+    font-size: 3vmin;
+}
+/* Container */
+
+.container-content {
+    background: var(--maingradient);
+    color: inherit;
+    border-radius: 2em;
+    padding: 15px 20px 20px 20px;
+    border-width: 1px 0;
+}
+.container-content .col-md-6 .img-fluid{
+    margin-top:1vmin;
+}
+/* Backgrounds */
+.main-bg {
+    background:var(--gradient1);
+}
+/* Login & Register Pages*/
+
+.login-container {
+    max-width: 700px;
+    z-index: 100;
+    margin: 0 auto;
+    padding-top:100px;
+}
+.login.login-container {
+    width: 600px;
+}
+.wrapper.login-container {
+    margin-top: 140px;
+}
+span img {
+    height:6rem;
+    width:8rem;
+    margin-bottom: 0;
+}

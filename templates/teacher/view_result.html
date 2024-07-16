@@ -1,0 +1,147 @@
+{% extends 'teacher/teacherbase.html' %}
+{% block content %}
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+    <style media="screen">
+      a:link {
+        text-decoration: none;
+      }
+      .row {
+        margin: 10px;
+      }
+      .outer-wrapper{
+        margin:10px;
+        margin-left: 2%;
+        border-radius: 4px;
+        max-width: fit-content;
+        max-height: fit-content;
+      }
+      .table-wrapper 
+      {
+        overflow-y: scroll;
+        height: fit-content;
+        max-height: 55vh;
+        width:170vh;
+        margin-top: 22px;
+        }
+        table {
+        min-width: max-content;
+        border-collapse: separate;
+        border-spacing: 0px;   
+        }
+        table th{
+        position: sticky; 
+        top: 0px;
+        text-align: center;
+        } 
+        #t{
+            background-color: rgb(4, 42, 109);
+            color:white;
+            font-weight: bold;
+        }
+
+        table th, table td {
+        padding: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        }
+
+        table td {
+        text-align: left;
+        font-size: 15px;
+      }
+
+
+        .form-input{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        }
+
+        label{
+            font-size: 20px;
+            font-style: oblique;
+            font-weight: bold;
+        }
+
+
+        .form-input{
+          justify-content: center;
+          display: flex;
+        }
+    
+        .form-input a{
+            color:white;
+        }
+
+        button:hover{
+          transition:2s;
+          transform:scale(1.1);
+        }
+
+        .insert{
+          justify-content: center;
+          display: flex;
+      }
+  
+      .insert a{
+          background-color:blue;
+          color:white;
+      }
+
+  
+    </style>
+  </head>
+  <br><br>
+  <div class="container">
+    <div class="panel panel-primary">
+    <div class="panel-heading" style="display: flex;justify-content: center;height:20px;margin-top:-30px;margin-bottom:-5px;">
+        <h3 class="panel-title" style="text-align:center;font-family: 'Times New Roman', Times, serif;font-weight: bold;color: darkblue;">Students Result</h3>
+    </div>
+      <div class="outer-wrapper" style="display: flex;justify-content: center;">
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+                <th id="t">Name</th>
+                <th id="t">Smart card Id</th>
+                <th id="t">Programme</th>
+                <th id="t">Course Id</th>
+                <th id="t">Date Attempted</th>
+                <th id="t">Email</th>
+                <th id="t">Mobile</th>
+                <th id="t">Maximum Marks</th>
+                <th id="t">Obtained Marks</th>
+            </thead>
+            <tbody>
+              {% for i in list %}
+              <tr>
+        
+                <td style="text-align:center;">{{i.SId.name}}</td>
+                <td style="text-align:center;"> {{i.SId.smartID}}</td>
+                <td style="text-align:center;"> {{i.SId.programme}}</td>
+                <td style="text-align:center;">{{i.TestId.Ccode}}</td>
+                <td style="text-align:center;">{{i.date_attempted}}</td>
+                <td style="text-align:center;"> {{i.SId.email}}</td>
+                <td style="text-align:center;">{{i.SId.mobile}}</td>
+                <td style="text-align:center;">{{i.Max_Total_Mark}}</td>
+                <td style="text-align:center;">{{i.TotalMarkObtained}}</td>
+                
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div style="display:flex; justify-content: left; margin-left: 2em;">
+        <a class="btn btn-primary btn-md" href="{% url 'Exam After' ExamID %}"><span><b>Back <<</b></span></a>
+      </div>
+    </div>
+  </div>
+  <br><br>
+{% endblock content %}

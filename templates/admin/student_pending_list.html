@@ -1,0 +1,96 @@
+{% extends 'admin/adminbase.html' %}
+{% block content %}
+{% load static %}
+
+<head>
+    <style media="screen">
+      a:link {
+        text-decoration: none;
+      }
+      .row {
+        margin: 10px;
+      }
+      .outer-wrapper{
+        margin:10px;
+        margin-left: 2%;
+        border-radius: 4px;
+        max-width: fit-content;
+        max-height: fit-content;
+      }
+      .table-wrapper 
+      {
+        overflow-y: scroll;
+        height: fit-content;
+        max-height: 55vh;
+        width:170vh;
+        margin-top: 22px;
+        }
+        table {
+        min-width: max-content;
+        border-collapse: separate;
+        border-spacing: 0px;   
+        }
+        table th{
+        position: sticky; 
+        top: 0px;
+        text-align: center;
+        } 
+        #t{
+            background-color: rgb(4, 42, 109);
+            color:white;
+            font-weight: bold;
+        }
+
+        table th, table td {
+        padding: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        }
+
+        table td {
+        text-align: left;
+        font-size: 15px;
+      }
+    </style>
+  </head>
+  <br><br>
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading" style="display: flex;justify-content: center;height:20px;margin-top:-30px;margin-bottom:-5px;">
+        <h3 class="panel-title" style="text-align:center;font-family: 'Times New Roman', Times, serif;font-weight: bold;color: darkblue;">Pending Students</h3>
+      </div>
+      <div class="outer-wrapper" style="display: flex;justify-content: center;">
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+                  <th id="t">Name</th>
+                  <th id="t">User Name</th>
+                  <th id="t">Programme</th>
+                  <th id="t">Email</th>
+                  <th id="t">Mobile</th>
+              
+                  <th id="t">Approve</th>
+                  <th id="t">Reject</th>
+            </thead>
+            <tbody>
+              {% for i in list %}
+              <tr>
+        
+                <td style="text-align:center;">{{i.name}}</td>
+                <td style="text-align:center;">{{i.username}}</td>
+                <td style="text-align:center;">{{i.programme}}</td>
+                <td style="text-align:center;">{{i.email}}</td>
+                <td style="text-align:center;">{{i.mobile}}</td>
+                
+                <td style="width:5px;"><a class="btn btn-primary btn-xs" href="{% url 'Student Approved' i.username %}"><i class="fa fa-check"></i></a></td>
+                <td style="width:5px;"><a class="btn btn-danger btn-xs" href="{% url 'Student Rejected' i.username %}"><i class="fa fa-ban"></i></a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  {% endblock content %}

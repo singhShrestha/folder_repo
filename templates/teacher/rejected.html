@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Rejected Page</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <style>
+            /*Google Font*/
+            @import url('https://fonts.googleapis.com/css2?family=Acme&family=Lobster&family=Lobster+Two&family=Sniglet&display=swap');
+            *{
+                box-sizing:border-box;
+            }
+            :root{
+                --Snigle-font:"Sniglet",cursive;
+                --Lobster:"Lobster",cursive;
+                --Lobster_two:"Lobster Two",cursive;
+                --Acme:"Acme",cursive;
+                --light-black:#2e2c2caf;
+                --bggradient:linear-gradient(to bottom, #76f1f1, #11349c);
+                --light-gray:rgba(255,255,255,0.7);
+                --maingradient:white;
+                --gradient1: -webkit-linear-gradient(left,#009FFD,#2A2A72)
+            }
+            html {
+                height: 100%;
+            }
+            body {
+                height: 100vh;
+                margin: 0;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                /* overflow-y: hidden; */
+            }
+            /* Text Color */
+            .text1{
+                color: darkblue;
+                font-family: var(--Lobster_two);
+                font-weight: bold;
+            }
+            /* Text Align */
+            .text-c {
+                text-align: center;
+            }
+            .text2{
+                font-family: var(--Acme);
+                font-size: 3vmin;
+                color:red;
+            }
+            /* Container */
+            .container-content {
+                background: var(--maingradient);
+                color: inherit;
+                border-radius: 2em;
+                padding: 15px 20px 20px 20px;
+                border-width: 1px 0;
+            }
+            .container-content .col-md-6 .img-fluid{
+                margin-top:1vmin;
+            }
+            /* Backgrounds */
+            .main-bg {
+                background:var(--gradient1);
+            }
+            /* Login & Register Pages*/
+
+            .login-container {
+                max-width: 700px;
+                z-index: 100;
+                margin: 0 auto;
+                padding-top:100px;
+            }
+            .login.login-container {
+                width: 600px;
+            }
+            .wrapper.login-container {
+                margin-top: 140px;
+            }
+            span img {
+                height:6rem;
+                width:8rem;
+                margin-bottom: 0;
+            }
+            .insert{
+                justify-content: center;
+                display: flex;
+            }
+            .insert a{
+                background-color:darkblue;
+                color:white;
+            }
+
+            .insert a:hover{
+                transition:2s;
+                transform: scale(1.1);
+                background-color:darkblue;
+            }
+        </style>
+    </head>
+    <body class="main-bg">
+        {% include 'header.html' %}
+        <section style="background:linear-gradient(to bottom, #76f1f1, #11349c);">
+            <div class="login-container text-c animated flipInX">
+                <div class="container-content">
+                    <div>
+                        <h5 class="logo-badge text-whitesmoke"><span><img src="{% static '/assets/bv_logo.png' %}" /></span></h5>
+                    </div>
+                    <h3 class="text1">Banasthali e-Pariksha</h3>
+                    <p class="text2"><marquee behavior="" direction="left">Sorry!! Your Request has been rejected by the Administration!</marquee></p>
+                    <div class="col-md-6 col-lg-5 d-none d-md-block" style="margin-left:30%">
+                        <img src="{% static 'assets/rejected.gif' %}" alt="request_approval" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                    </div>
+                    <div class="insert">
+                        <a class="btn btn-success" href="{% url 'Teacher Logout' %}" ><span>Logout</span></a>
+                    </div>
+                </div>
+            </div><br><br>
+        </section>
+        {% include 'footer.html' %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    </body>
+</html>

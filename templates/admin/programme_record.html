@@ -1,0 +1,114 @@
+{% extends 'admin/adminbase.html' %}
+{% block content %}
+{% load static %}
+
+<head>
+    <style media="screen">
+      a:link 
+      {
+        text-decoration: none;
+      }
+      .row {
+        margin: 10px;
+      }
+      .outer-wrapper{
+        margin:10px;
+        margin-left: 2%;
+        border-radius: 4px;
+        max-width: fit-content;
+        max-height: fit-content;
+      }
+      .table-wrapper 
+      {
+        overflow-y: scroll;
+        height: fit-content;
+        max-height: 50vh;
+        width:170vh;
+        margin-top: 22px;
+        }
+        table {
+        min-width: max-content;
+        border-collapse: separate;
+        border-spacing: 0px;   
+        }
+        table th{
+        position: sticky; 
+        top: 0px;
+        text-align: center;
+        } 
+        #t{
+            background-color: rgb(4, 42, 109);
+            color:white;
+            font-weight: bold;
+        }
+
+        table th, table td {
+        padding: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        }
+
+        table td {
+        text-align: left;
+        font-size: 15px;
+      }
+      .insert{
+        justify-content: center;
+        display: flex;
+      }
+
+      .insert a{
+          background-color: darkgreen;
+          color:white;
+      }
+
+      .insert a:hover{
+          transition:2s;
+          transform: scale(1.2);
+      }
+
+      td a:hover{
+        transition:2s;
+        transform:scale(1.2);
+      }
+      
+  </style>
+  </head>
+  <br><br>
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading" style="display: flex;justify-content: center;height:20px;margin-top:-55px;margin-bottom:-5px;">
+        <h3 class="panel-title" style="text-align:center;font-family: 'Times New Roman', Times, serif;font-weight: bold;color: darkblue;">Programmes</h3>
+      </div>
+      <div class="outer-wrapper" style="display: flex;justify-content: center;">
+          <div class="table-wrapper">
+            <table class="table">
+              <thead>
+                        <th id="t">Programme Name</th>
+                        <th id="t">Update</th>
+                        <th id="t">Delete</th>
+              </thead>
+              <tbody>
+                        {% for i in list %}
+                        <tr> 
+                        <td>{{i.ProgrammeName}}</td>
+                        <td style="width:5px;"><a class="btn btn btn-lg" href="{% url 'Update Programme' i.ProgrammeName %}"><i class="fas fa-edit" style="color:green;"></i></a></td>
+                        <td style="width:5px;"><a class="btn btn btn-lg" href="{% url 'Delete Programme' i.ProgrammeName %}" onclick="return confirm('Press OK to confirm!')"><i class="fas fa-trash" style="color:red;"></i></a></td>
+                        </tr>
+                        {% endfor %}
+              </tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+    <div style="display:flex; justify-content: space-around;">
+      <div style="display:flex; justify-content: left; margin-left: 2em;">
+        <a class="btn btn-primary btn-md" href="{% url 'Welcome Admin' %}"><span><b>Back <<</b></span></a>
+      </div>
+      <div class="insert">
+        <a class="btn btn-success" href="{% url 'Insert Programme' %}" ><span>Insert</span></a>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  {% endblock content %}

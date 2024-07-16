@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Main Page</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="{% static 'css/mobile-style.css' %}"> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            /*Google Font*/
+            @media only screen and(max-width:768px)
+            {
+                .transbox
+                {
+                    padding-left: 4rem;
+                }
+            }
+            @import url('https://fonts.googleapis.com/css2?family=Acme&family=Lobster&family=Lobster+Two&family=Sniglet&display=swap');
+            *{
+                box-sizing:border-box;
+            }
+            header{
+                overflow-x:hidden;
+            }
+            :root{
+                --Snigle-font:"Sniglet",cursive;
+                --Lobster:"Lobster",cursive;
+                --Lobster_two:"Lobster Two",cursive;
+                --Acme:"Acme",cursive;
+                --light-black:#2e2c2caf;
+                --bggradient:rgba(3, 63, 159, 0.996);
+                --light-gray:rgba(255,255,255,0.7);
+                --maingradient1:linear-gradient(to left,#e6e6e9, #76f1f1);
+            }
+            header .container-fluid{
+                background-color:var(--bggradient);
+            }
+            header .navbar{
+                margin:0;
+                padding: 0;
+            }
+            header a{
+                font-family:var(--Acme);
+            }
+            header h1{
+                font-family:var(--Acme);
+            }
+            header .navbar-brand{
+                font-size:2em;
+                vertical-align: middle;
+                color:whitesmoke;
+                padding-left:0.2rem;  
+                text-shadow: 5px 5px 10px black;
+            }
+            header .navbar-brand:hover{
+                color:whitesmoke;
+            }
+            header .navbar-brand img{
+                justify-content: space-around;
+                border-radius: 50%;
+                max-width:100% ;
+                height:auto;
+                margin-right: 0.2em;
+            }
+            header .navbar-brand img:hover{
+                transform:scale(1.1);
+                transition:1s;
+            }
+            header .nav-link{
+                color:whitesmoke;
+                font-size:1em;
+            }
+            header .nav-link:hover{
+            transform:scale(1.1);
+            transition:1s;
+            color:white;
+            }
+            header .nav-item:last-child{
+                padding-right:2em;
+            }
+            header .nav-item{
+                padding:0.9em;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+           <div class="container-fluid p-0">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                  <h1 class="navbar-brand">
+                    <img src="{% static '/assets/bv_logo.jpeg' %}" alt="Logo" width="70em" height="70em">
+                    Banasthali e-Pariksha
+                  </h1>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                      <li class="nav-item active">
+                        <a class="nav-link" aria-current="page" href="{% url 'Admin login' %}">
+                          <img src="{% static '/assets/admin_logo.png' %}" alt="Logo" width="50" height="50">
+                          Admin
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'Teacher Login' %}">
+                          <img src="{% static '/assets/teacher_icon_2.jpg' %}" alt="Logo" width="50" height="50">
+                          Teacher
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'Student Login' %}">
+                          <img src="{% static '/assets/student_logo.png' %}" alt="Logo" width="50" height="50">
+                          Student
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+           </div>
+        </header>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    </body>
+</html>

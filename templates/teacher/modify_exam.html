@@ -1,0 +1,127 @@
+{% extends 'teacher/teacherbase.html' %}
+{% block content %}
+
+<head>
+    <style media="screen">
+      a:link {
+        text-decoration: none;
+      }
+      .row {
+        margin: 10px;
+      }
+      .outer-wrapper{
+        margin:10px;
+        margin-left: 2%;
+        border-radius: 4px;
+        max-width: fit-content;
+        max-height: fit-content;
+      }
+      .table-wrapper 
+      {
+        overflow-y: scroll;
+        height: fit-content;
+        max-height: 50vh;
+        width:170vh;
+        margin-top: 22px;
+        }
+        table {
+        min-width: max-content;
+        border-collapse: separate;
+        border-spacing: 0px;   
+        }
+        table th{
+        position: sticky; 
+        top: 0px;
+        text-align: center;
+        } 
+        #t{
+            background-color: rgb(4, 42, 109);
+            color:white;
+            font-weight: bold;
+        }
+
+        table th, table td {
+        padding: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        }
+
+        table td {
+        text-align: left;
+        font-size: 15px;
+      }
+
+      
+      .row {
+        margin: 10px;
+      }
+  
+      .insert{
+          justify-content: center;
+          display: flex;
+      }
+  
+      .insert a{
+          background-color: darkgreen;
+          color:white;
+      }
+  
+      .insert a:hover{
+          transition:2s;
+          transform: scale(1.2);
+      }
+
+      td a:hover{
+        transition:2s;
+        transform:scale(1.2);
+      }
+
+    </style>
+  </head>
+  <br><br>
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading" style="display: flex;justify-content: center;height:40px;margin-top:-30px;margin-bottom:-5px;">
+        <h3 class="panel-title" style="text-align:center;font-family: 'Times New Roman', Times, serif;font-weight: bold;color: darkblue;">Modify Exam</h3>
+      </div>
+      <div class="outer-wrapper" style="display: flex;justify-content: center;">
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              
+                <th id="t">Creation Date</th>
+                <th id="t">Exam Name</th>
+                <th id="t">Progamme Name</th>
+                <th id="t">Course ID</th>
+                <th id="t">Test Duration</th>
+                <th id="t">Modify Questions</th>
+                <th id="t">Modify Other Details</th>
+                <th id="t">Delete Exam</th>
+            </thead>
+            <tbody>
+              {% for i in list %}
+              <tr>
+                <td style="text-align:center;">{{i.created_date}}</td>
+                <td style="text-align:center;">{{i.ExamName}}</td>
+                <td style="text-align:center;">{{i.Programme}}</td>
+                <td style="text-align:center;">{{i.Ccode}}</td>
+                <td style="text-align:center;">{{i.ExamDuration}} mins</td>
+                <td style="text-align: center;"><a class="btn btn btn-lg" href="{% url 'Modify Question' i.ExamID %}"><i class="fa fa-edit" style="color:green;"></i></a></td>
+                <td style="text-align: center;"><a class="btn btn btn-lg" href="{% url 'Modify Details' i.ExamID %}"><i class="fa fa-edit" style="color:green"></i></a></td>
+                <td style="text-align: center;"><a class="btn btn btn-lg" href="{% url 'Modify Exam Delete' i.ExamID %}" onclick="return confirm('Press OK to confirm!')"><i class="fa fa-trash " style="color: red;"></i></a></td>
+
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table><br>
+        </div>
+    </div>
+        </div>
+    </div>
+              <div class="insert">
+                <a class="btn btn-success" href="{% url 'Exam Page' %}" ><span>Finish</span></a>
+              </div>
+
+  <br><br>
+
+{% endblock %}

@@ -1,0 +1,113 @@
+/*Google Font*/
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Lobster&family=Lobster+Two&family=Sniglet&display=swap');
+*{
+    box-sizing:border-box;
+}
+:root{
+    --Snigle-font:"Sniglet",cursive;
+    --Lobster:"Lobster",cursive;
+    --Lobster_two:"Lobster Two",cursive;
+    --Acme:"Acme",cursive;
+    --light-black:#2e2c2caf;
+    --bggradient:rgba(3, 63, 159, 0.996);
+    --light-gray:rgba(255,255,255,0.7);
+    --maingradient2:#518de7;
+    --maingradient:#c0e1f1;
+}
+
+/* body{
+    background:var(--maingradient);
+} */
+
+.height{
+    height: 100vh;
+}
+
+.card{
+    border:none;
+    padding: 5%;
+    color:darkblue;
+}
+
+span{
+    width:40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:none;
+    color:black;
+    font-size: 1vmin;
+}
+span img{
+    width:20vmin;
+}
+span h1{
+    font-family: var(--Lobster_two);
+    color:darkblue;
+}
+.mt-2{
+    color:black;
+    display: flex;
+    justify-content: center;
+    font-family: var(--Acme);
+}
+.form-group i{
+    position: absolute;
+    height:100%;
+}
+.icon{
+    padding:0.3rem;
+    color:darkblue;
+    min-width: 0rem;
+    text-align: center;
+    margin-top:-0.37rem;
+}
+.form-input{
+    position: relative;
+    margin-bottom: 2%;
+    margin-top: 4%;
+}
+.form-input i{
+    position: absolute;
+    font-size:3.3vmin;
+    top: 1vmin;
+    left: 1vmin;
+}
+.form-control{
+    height: 50%;
+    background-color:whitesmoke;
+    font-size: 3vmin;
+    color:black;
+    text-align: center;
+}
+.form-control:focus{
+    background-color: white;
+    box-shadow: none;
+    color:black;
+    border-color: #0c28e2;
+}
+.text-decoration-none{
+    font-size:2vmin;
+    color:red;
+}
+.btnRegister {
+    margin-left: 40%;
+    border: none;
+    border-radius: 2em;
+    padding: 2%;
+    background:lightskyblue;
+    color:black;
+    font-weight: 600;
+    width: 25%;
+    cursor: pointer;
+}
+.btnRegister:hover{
+    transform:scale(1.2);
+    transition:1s;
+    color:black;
+    background:var(--maingradient2);
+}
+.text-center a{
+    color:darkblue;
+    font-size: 3vmin;
+}

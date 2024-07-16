@@ -1,0 +1,113 @@
+{% extends 'admin/adminbase.html' %}
+{% block content %}
+{% load static %}
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+    <style media="screen">
+      a:link {
+        text-decoration: none;
+      }
+      .row {
+        margin: 10px;
+      }
+      .outer-wrapper{
+        margin:10px;
+        margin-left: 2%;
+        border-radius: 4px;
+        max-width: fit-content;
+        max-height: fit-content;
+      }
+      .table-wrapper 
+      {
+        overflow-y: scroll;
+        height: fit-content;
+        max-height: 55vh;
+        width:170vh;
+        margin-top: 22px;
+        }
+        table {
+        min-width: max-content;
+        border-collapse: separate;
+        border-spacing: 0px;   
+        }
+        table th{
+        position: sticky; 
+        top: 0px;
+        text-align: center;
+        } 
+        #t{
+            background-color: rgb(4, 42, 109);
+            color:white;
+            font-weight: bold;
+        }
+
+        table th, table td {
+        padding: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        }
+
+        table td {
+        text-align: left;
+        font-size: 15px;
+      }
+
+      td a:hover{
+        transition:2s;
+        transform:scale(1.2);
+      }
+      
+    </style>
+  </head>
+  <br><br>
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading" style="display: flex;justify-content: center;height:20px;margin-top:-30px;margin-bottom:-5px;">
+        <h3 class="panel-title" style="text-align:center;font-family: 'Times New Roman', Times, serif;font-weight: bold;color: darkblue;">Students</h3>
+      </div>
+      <div class="outer-wrapper" style="display: flex;justify-content: center;">
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+                <th id="t">Name</th>
+                <th id="t">User Name</th>
+                <th id="t">Smart card Id</th>
+                <th id="t">Programme</th>
+                <th id="t">Email</th>
+                <th id="t">Mobile</th>
+                <th id="t">Update</th>
+                <th id="t">Delete</th>
+            </thead>
+            <tbody>
+              {% for i in list %}
+              <tr>
+        
+                <td style="text-align:center;">{{i.name}}</td>
+                <td style="text-align:center;"> {{i.user}}</td>
+                <td style="text-align:center;"> {{i.smartID}}</td>
+                <td style="text-align:center;"> {{i.programme}}</td>
+                <td style="text-align:center;"> {{i.email}}</td>
+                <td style="text-align:center;">{{i.mobile}}</td>
+                
+                <td style="width:5px;"><a class="btn btn btn-lg" href="{% url 'Update Student' i.user %}"><i class="fas fa-edit" style="color:green;"></i></a></td>
+
+                <td style="width:5px;"><a class="btn btn btn-lg" href="{% url 'Delete Student' i.user %}" onclick="return confirm('Press OK to confirm!')"><i class="fas fa-trash" style="color:red;"></i></a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="insert" style="display:flex; justify-content: left; margin-left: 2em;">
+        <a class="btn btn-primary btn-md" href="{% url 'Total Programmes' %}"><span><b>Back <<</b></span></a>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  {% endblock content %}

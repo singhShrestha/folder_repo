@@ -1,0 +1,126 @@
+{% extends 'student/studentbase.html' %}
+{% block content %}
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Acme&family=Lobster&family=Lobster+Two&family=Sniglet&display=swap');
+            :root{
+                --Snigle-font:"Sniglet",cursive;
+                --Lobster:"Lobster",cursive;
+                --Lobster_two:"Lobster Two",cursive;
+                --Acme:"Acme",cursive;
+                --light-black:#2e2c2caf;
+                --bggradient:linear-gradient(to bottom, #11349c, #76f1f1);
+                --light-gray:rgba(255,255,255,0.7);
+                --maingradient:linear-gradient(to left,#e6e6e9, #94bce7);
+            }
+        .btn:hover{
+            transform:scale(1.1);
+        }
+
+        .icon{
+
+            padding:0.4rem;
+            color:darkblue;
+        }
+        .form-input{
+            position: relative;
+        }
+
+        .form-input i{
+            position: absolute;
+            top: 1.2em;
+            left: 0.2em;
+            font-size: 1.5em;
+        }
+
+        .heading h3{
+            font-family:var(--Lobster_two);
+            font-weight: bold;
+        }
+
+    </style>
+    <script>
+        function validate() 
+        {
+            var uname = document.forms[0].elements['un'].value;
+            var phoneNumber = document.forms[0].elements['pn'].value;
+            var unameReg= /^[A-Za-z]{2}[A-Za-z0-9\._@-]{1,30}$/;
+            var phoneReg = /^[6789][0-9]{9}$/;
+            if(unameReg.test(uname)==false)
+            {
+                alert('Please enter a valid User Name');
+                return false;
+            }
+            else if(phoneReg.test(phoneNumber)== false)
+            {
+                alert('Please enter a valid Phone Number');
+                return false;
+            }
+            else
+                return true;
+        }
+    </script>
+
+</head>
+<section class="vh-20" style="background-color:white;">
+    <div class="container py-5 h-80 " style="overflow-x: hidden;margin-top:-0.5em; margin-bottom:-2.9em;">
+      <div class="row d-flex justify-content-center align-items-center h-60">
+        <div class="col col-lg-6 mb-4 mb-lg-0">
+            <div class="card mb-3" style="border-radius:.5rem; background-color: rgba(205, 222, 248, 0.865);">
+              <div class="row g-0">
+                <div class="col-md-12">
+                  <div class="card-body p-4">
+                    <div class="heading" style="text-align: center;"><h3>Update Student</h3></div>
+                    <hr class="mt-0 mb-4">
+                    <div class="row pt-1">
+  
+                      <form method="post" autocomplete="on" enctype="multipart/form-data" onsubmit="return validate()" action="{% url 'Student Update Info' %}">
+                         
+
+                            <div class="form-input">
+                                <i class="fa fa-user icon fa-2x"></i>
+                                <label>Enter User Name</label>
+                                <input type="text" name="un" class="form-control" placeholder="User name" value="{{list.user}}" required style="text-align: center;"/>
+                            </div>
+                            <br>
+
+                            <div class="form-input">
+                                <i class="fa fa-phone icon fa-1x"></i>
+                                <label>Enter Phone Number</label>
+                                <input type="text" name="pn"  class="form-control" placeholder="Student Phone Number" value="{{list.mobile}}" required style="text-align: center;" />
+                            </div>
+                            <br>
+
+                        <div id="flash" style="color: red;font-size: 1.1rem;text-align:center;font-family: var(--Snigle-font);">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags}} m-0" role="alert">
+                                            {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+  
+                          <div><a href="" class="lgbtn" style="display:flex; justify-content:center;">
+                              <button type="submit" class="btn btn-success mt-4">Update</button>
+                          </a></div>
+                      </form>
+
+                      <div><a href="{% url 'Student Reset Password' %}" class="lgbtn" style="display:flex; justify-content:center;">
+                        <button  class="btn btn-primary mt-4">Reset Password</button>
+                    </a></div>   
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+{% endblock content %}

@@ -1,0 +1,76 @@
+/*Google Font*/
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Lobster&family=Lobster+Two&family=Sniglet&display=swap');
+*{
+    box-sizing:border-box;
+}
+:root{
+    --Snigle-font:"Sniglet",cursive;
+    --Lobster:"Lobster",cursive;
+    --Lobster_two:"Lobster Two",cursive;
+    --Acme:"Acme",cursive;
+    --light-black:#2e2c2caf;
+    --bggradient:rgba(3, 63, 159, 0.996);
+    --light-gray:rgba(255,255,255,0.7);
+    --maingradient1:linear-gradient(to left,#e6e6e9, #76f1f1);
+}
+main{
+    background-image: url("../assets/body.png");
+    margin:0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+main marquee{
+    color:rgb(255, 255, 255);
+    font-family: var(--Lobster_two);
+    font-size: 2rem;
+}
+main .row{
+    margin-top: -2.5rem;
+}
+main .row .col-md-5{
+    padding:10vmin 15vmin;
+    padding-right: 20vmin;
+    padding-top:18vmin;
+}
+main .row .col-md-7{
+    padding-top:15vmin;
+    margin-left:8vmin;
+    font-family: var(--Lobster_two);
+}
+main .row .col-md-7 .btn:hover{
+    transform:scale(1.2);
+    transition:1s;
+    background-color:darkblue;
+    color:white;
+}
+main .row .col-md-7 h1{
+    font-family: var(--Lobster);
+    font-size: 7vmin;
+    font-weight: bold;
+    color:rgb(9, 9, 114);
+    padding: 0.1em 0em;
+}
+main .row .col-md-5 .img-fluid{
+    width:150%;
+    height:60%;
+}
+main .row .col-md-7 h3{
+    padding: 1vmin;
+    letter-spacing: 2px;
+}
+main .row .col-md-7 .btn{
+    border-radius: 30px;
+    font-weight: bold;
+    background-color: rgb(197, 218, 236);
+}
+footer{
+    background-color:rgba(0,0,0,1);
+    overflow-x: hidden;
+    bottom: 0;
+    width: 100%;
+}
+footer .pt-4{
+    color: whitesmoke;
+    font-size: smaller;
+}

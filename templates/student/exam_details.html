@@ -1,0 +1,89 @@
+{% extends 'student/studentbase.html' %}
+{% block content %}
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Acme&family=Lobster&family=Lobster+Two&family=Sniglet&display=swap');
+            :root{
+                --Snigle-font:"Sniglet",cursive;
+                --Lobster:"Lobster",cursive;
+                --Lobster_two:"Lobster Two",cursive;
+                --Acme:"Acme",cursive;
+                --light-black:#2e2c2caf;
+                --bggradient:linear-gradient(to bottom, #11349c, #76f1f1);
+                --light-gray:rgba(255,255,255,0.7);
+                --maingradient:linear-gradient(to left,#e6e6e9, #76f1f1);
+            }
+        .gradient-custom {
+        background: #f6d365;
+
+        background: -webkit-linear-gradient(to right bottom, rgb(242, 222, 155), rgb(133, 214, 248));
+
+        background: linear-gradient(to right bottom, rgb(250, 243, 219), rgb(183, 234, 253))
+        }
+
+        .btn:hover{
+            transform:scale(1.1);
+        }
+
+    </style>
+
+</head>
+<section class="vh-20" style="background-color:white;">
+    <div class="container py-5 h-100" style="overflow-x: hidden;margin-top:2em; margin-bottom:-2.9em;">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-8 mb-6 mb-lg-0">
+          <div class="card mb-3" style="border-radius: .5rem;">
+            <div class="row g-0">
+              <div class="col-md-12 gradient-custom">
+                <div class="card-body p-4">
+                  <h2 style="text-align: center;font-family: var(--Lobster_two); font-weight: bold;">{{ExamDetails.ExamName}}</h2>
+                  <hr class="mt-0 mb-4">
+                  <div class="row pt-1">
+                    <div class="col-6 mb-3">
+                      <h4>Programme Name</h4>
+                      <h6 class="text-muted">{{ExamDetails.Programme}}</h6>
+                    </div>
+                    <div class="col-6 mb-3">
+                      <h4>Course Name</h4>
+                      <h6 class="text-muted">{{ExamDetails.Ccode.CourseName}}</h6>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <h4>Course ID</h4>
+                        <h6 class="text-muted">{{ExamDetails.Ccode}}</h6>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <h4>Test Duration</h4>
+                        <h6 class="text-muted">{{ExamDetails.ExamDuration}} mins</h6>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <h4>Total Marks</h4>
+                        <h6 class="text-muted">{{MaximumMarks}}</h6>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <h4>Instructions</h4>
+                        <h6 class="text-muted">{{ExamDetails.Instruction}}</h6>
+                    </div>
+                  </div>
+
+                  <div style="display:flex; justify-content: space-around;">
+                    <div style="display:flex; justify-content: left; margin-left: 2em;">
+                      <a class="btn btn-primary btn-md" href="{% url 'Student After Login' %}"><span><b>Back <<</b></span></a>
+                    </div>
+
+                    <div><a href="{% url 'Give Exam' ExamDetails.ExamID %}" class="lgbtn" >
+                      <button type="submit" class="btn btn-success btn-md">Start</button>
+                    </a></div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+{% endblock content %}

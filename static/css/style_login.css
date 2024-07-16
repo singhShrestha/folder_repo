@@ -1,0 +1,70 @@
+/*Google Font*/
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Lobster&family=Lobster+Two&family=Sniglet&display=swap');
+*{
+    box-sizing:border-box;
+}
+section{
+    overflow-y: hidden;
+}
+:root{
+    --Snigle-font:"Sniglet",cursive;
+    --Lobster:"Lobster",cursive;
+    --Lobster_two:"Lobster Two",cursive;
+    --Acme:"Acme",cursive;
+    --light-black:#2e2c2caf;
+    --bggradient:linear-gradient(to bottom, #76f1f1, #11349c);
+    --light-gray:rgba(255,255,255,0.7);
+    --maingradient:#518de7;
+}
+.row{
+   margin-bottom:1rem ;
+   margin-top: 1rem;
+}
+.d-flex{
+    margin-bottom:1.5rem;
+    margin-block-start: -1.5rem;
+}
+.container .pt-1 .btn:hover{
+    transform:scale(1.2);
+    transition:1s;
+    color:darkblue;
+    background: var(--maingradient);
+}
+.container .pt-1 .btn{
+    border-radius: 30rem;
+    background:var(--bggradient);
+    color:white;
+}
+.container .h2{
+    font-family:var(--Lobster_two);
+    color:darkblue;
+    padding-top: 5.7rem;
+}
+.container .col-md-6 img{
+    margin-top: 15vmin;
+}
+.form-outline i{
+    position: absolute;
+    height:100%;
+}
+.icon{
+    padding:0.7rem;
+    color: rgb(25, 2, 126);
+    min-width: 0rem;
+    text-align: center;
+}
+.form-outline{
+    width: 100%;
+    margin-bottom: 0rem;
+}
+.form-control{
+    text-align: center;
+}
+.mt-2
+{
+    color:black;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    font-family: var(--Acme);
+}

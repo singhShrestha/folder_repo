@@ -1,0 +1,281 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Acme&family=Lobster&family=Lobster+Two&family=Sniglet&display=swap');
+      :root{
+        --Snigle-font:"Sniglet",cursive;
+        --Lobster:"Lobster",cursive;
+        --Lobster_two:"Lobster Two",cursive;
+        --Acme:"Acme",cursive;
+      }
+
+      body{
+        background-color:rgba(226, 239, 243, 0.693);
+      }
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            color:black;
+            border-radius: 10px;
+            padding: 20px;
+            font-family: 'Montserrat', sans-serif;
+            max-width:auto;
+        }
+        .container > p{
+            font-size: 32px;
+        }
+        .question{
+            width: 75%;
+        }
+        .options{
+            position: relative;
+            padding-left: 40px;
+        }
+        #options label{
+            display: block;
+            margin-bottom: 15px;
+            font-size: 14px;
+            cursor: pointer;
+            font-size:20px;
+        }
+        .options input{
+            opacity: 0;
+        }
+        .checkmark {
+            position: absolute;
+            top: 2px;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #6de8fddc;
+            border: 2px solid black;
+            border-radius: 50%;
+        }
+        .options input:checked ~ .checkmark:after {
+            display: block;
+        }
+        .options .checkmark:after{
+            content: "";
+            width: 10px;
+            height: 10px;
+            display: block;
+            background: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            transform: translate(-50%,-50%) scale(0);
+            transition: 300ms ease-in-out 0s;
+        }
+        .options input[type="radio"]:checked ~ .checkmark{
+            background: darkgreen;
+            transition: 300ms ease-in-out 0s;
+        }
+        .options input[type="radio"]:checked ~ .checkmark:after{
+            transform: translate(-50%,-50%) scale(1);
+        }
+        .btn-primary{
+            color: #ddd;
+            border: 1px solid #ddd;
+        }
+        .btn-primary:hover{
+            background-color: #21bf73;
+            border: 1px solid #21bf73;
+        }
+        .btn-success{
+            padding: 5px 25px;
+            background-color: #21bf73;
+        }
+        @media(max-width:576px){
+            .question{
+                width: 100%;
+                word-spacing: 2px;
+            } 
+        }
+
+        .grid-container {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            border:solid 4px darkblue;
+            padding: .3em;
+            width:75%;
+            margin-left:12%;
+            background-color: rgb(178, 204, 230);
+        }
+
+        .insert{
+            justify-content: center;
+            display: flex;
+        }
+    
+        .insert a{
+            background-color: darkgreen;
+            color:white;
+            border-radius: 0.5em;
+            text-decoration: none;
+            height:2.5em;
+            display: flex; 
+            align-items: center;
+        }
+
+        button{
+            text-decoration: none;
+        }
+    
+        button:hover{
+            transition:2s;
+            transform: scale(1.2);
+        }
+
+        .histogram{
+            font-family:var(--Acme);
+            color:black;
+            font-weight:normal;
+            font-size:1em;
+            width:70vw;
+            height:35%;
+            padding:2.5em 1.3em;
+            box-shadow: 1 1.3em 1.8em blue;
+            margin-left: 14%;
+            /*border:solid 2px darkblue;*/
+        }
+        #total-time-left
+        {
+            display:flex;
+            justify-content:center;
+            color:darkblue; 
+            font-family:var(--Acme); 
+            font-size: 30px;
+            margin:1em;
+            background-color: darkblue;
+            color:white;
+            width:30%;
+        }
+    </style>
+    <script type="text/javascript">
+        if(sessionStorage.getItem("count_timer"))
+        {
+            var count_timer = sessionStorage.getItem("count_timer");
+        } 
+        else 
+        {
+            s="{{ExamDetails.ExamDuration}}";
+            var dm=parseFloat(s);
+            var count_timer = 60*dm;
+        }
+        var minutes = parseInt(count_timer/60);
+        var seconds = parseInt(count_timer%60);
+        function countDownTimer(){
+            if(seconds < 10)
+            {
+                seconds= "0"+ seconds ;
+            }
+            if(minutes < 10)
+            {
+                minutes= "0"+ minutes ;
+            }
+            function getValue()
+            {
+                localStorage.clear("count_timer");
+            }
+            document.getElementById("total-time-left").innerHTML ="Time Left: "+minutes+":"+seconds+" mins";
+            if(count_timer <= 0)
+            {
+                document.getElementById("my_form").submit();
+                localStorage.clear("count_timer");
+            } 
+            else 
+            {
+                count_timer = count_timer -1 ;
+                minutes = parseInt(count_timer/60);
+                seconds = parseInt(count_timer%60);
+                localStorage.setItem("count_timer",count_timer);
+                setTimeout("countDownTimer()",1000);
+            }
+        }
+        setTimeout("countDownTimer()",1000);
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script>
+        $(function(){
+            $('input[type="radio"]').click(function(){
+                var $radio = $(this);
+        
+                // if this was previously checked
+                if ($radio.data('waschecked') == true)
+                {
+                    $radio.prop('checked', false);
+                    $radio.data('waschecked', false);
+                }
+                else
+                    $radio.data('waschecked', true);
+        
+                // remove was checked from other radios
+                $radio.siblings('input[type="radio"]').data('waschecked', false);
+            });
+        });
+        </script>
+    </head>
+    <body>
+    <div id="total-time-left"></div>
+    <div class="container mt-sm-5 my-5 ">
+    <h1 align="center" style="color:darkblue;font-weight: bold;font-family:var(--Lobster_two); font-size: 60px;">{{ExamDetails.ExamName}}</h1><br>
+    <h2 align="center" style="color:darkblue;font-weight: bold;font-family:var(--Lobster);">{{ExamDetails.Programme}}</h2>
+    <h2 align="center" style="color:darkblue;font-weight: bold;font-family:var(--Lobster);">{{ExamDetails.Code.CourseName}}</h2>
+    <h2 align="center" style="color:darkblue;font-weight: bold;font-family:var(--Lobster);">{{ExamDetails.Ccode}}</h2><br><br>
+    <div class="grid-container">
+        <div class="grid-child">
+            <span style="text-align: center; color:darkblue; font-family:var(--Acme); font-size: 20px;">Test Duration: {{ExamDetails.ExamDuration}} Mins</span><br>
+            <span style="text-align: center; color:darkblue; font-family:var(--Acme); font-size:20px;">Maximum Marks: {{MaximumMarks}}</span>
+        </div>
+        <div class="grid-child">
+            <span style="color:darkblue; font-family:var(--Acme); font-size: 20px;"><u>Instructions:</u></span><br>
+            <span style="color:darkblue; font-family:var(--Acme); font-size: 18px;">{{ExamDetails.Instruction}}</span>
+        </div> 
+    </div>
+    <form action="" id="my_form" method="post" >
+        <div class="histogram">
+            {% for i in list %}
+            <div style="display: flex;flex-flow: row wrap;justify-content:space-around;"><pre style="width: 100vw;font-size:18px;text-align: right; font-family:var(--Acme);background-color: darkblue;color: white; padding:0.2em;">Max Marks:{{i.max_mark}}    Negative Marks:{{i.neg_mark}}</pre></div>
+            <div class="question ml-sm-5 pl-sm-5 pt-2">
+                <div class="py-2 h4" style="font-size: 30px;"><b>Q. {{i.Ques}}</b></div><br>
+                <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                    <label class="options">{{i.Option1}}
+                        <input type="radio" name="{{i.QuesID}}" value="Option 1">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="options">{{i.Option2}}
+                        <input type="radio" name="{{i.QuesID}}" value="Option 2">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="options">{{i.option3}}
+                        <input type="radio" name="{{i.QuesID}}" value="Option 3">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="options">{{i.option4}}
+                        <input type="radio" name="{{i.QuesID}}" value="Option 4">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>     
+            {% endfor %}
+            <br><br><br>
+
+            <div><a href="" class="insert" style="display:flex; justify-content:center; text-decoration: none;">
+                <button type="submit" onclick="getValue()" class="btn btn-success" style="margin-bottom: 2em; border-radius:2em; border: none; color:white; font-size: 20px; background-color: darkgreen;">Submit</button>
+              </a></div>
+            </div><br><br>
+
+        </div>
+    </form>
+    <br><br>
+</body>
+</html>

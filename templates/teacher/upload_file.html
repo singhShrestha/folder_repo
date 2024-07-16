@@ -1,0 +1,166 @@
+{% extends 'teacher/teacherbase.html' %}
+{% block content %}
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Acme&family=Lobster&family=Lobster+Two&family=Sniglet&display=swap');
+            :root{
+                --Snigle-font:"Sniglet",cursive;
+                --Lobster:"Lobster",cursive;
+                --Lobster_two:"Lobster Two",cursive;
+                --Acme:"Acme",cursive;
+                --light-black:#2e2c2caf;
+                --bggradient:linear-gradient(to bottom, #11349c, #76f1f1);
+                --light-gray:rgba(255,255,255,0.7);
+                --maingradient:linear-gradient(to left,#e6e6e9, #94bce7);
+            }
+
+        .btn:hover{
+            transform:scale(1.1);
+        }
+
+        .icon{
+        padding:0.4rem;
+        color:darkblue;
+        }
+
+        .form-input{
+        position: relative;
+        }
+
+        .heading h3{
+            font-family:var(--Lobster_two);
+            font-weight: bold;
+        }
+
+        .form-input i{
+        position: absolute;
+        top: 1.2em;
+        left: 0.2em;
+        font-size: 1.5em;
+        }
+
+        option{
+            text-align: center;
+        }
+    </style>
+    <script>
+      function validate()
+      {
+        var t=document.forms[0].elements['time'].value;
+        var tReg=/^\d*\.?\d*$/;
+        if(tReg.test(t)==false || t<=0)
+        {
+          alert("Please Enter a Valid Time Duration");
+          return false;
+        }
+        else
+        return true;
+      }
+
+      /*var hash = {
+        'xlsx'  : 1,
+        'xls' : 1,
+      };
+
+      function check_extension(filename,submitId) {
+            var re = /\..+$/;
+            var ext = filename.match(re);
+            var submitEl = document.getElementById(submitId);
+            if (hash[ext]) 
+            {
+              submitEl.disabled = false;
+              return true;
+            } 
+            else 
+            {
+               
+              alert("Invalid file extension, please select another file");
+              document.getElementById('fm').value=null; 
+              submitEl.disabled = true;
+
+              return false;
+            }
+      }*/
+//       function fileValidation(){
+//     var fileInput = document.getElementById('file');
+//     var filePath = fileInput.value;
+//     var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+//     if(!allowedExtensions.exec(filePath)){
+//         alert('Please upload file having extensions .jpeg/.jpg/.png/.gif only.');
+//         fileInput.value = '';
+//         return false;
+//     }else{
+//         //Image preview
+//         if (fileInput.files && fileInput.files[0]) {
+//             var reader = new FileReader();
+//             reader.onload = function(e) 
+//             {
+//                 document.getElementById('imagePreview').innerHTML = '<img src="'+e.target.result+'"/>';
+//             };
+//             reader.readAsDataURL(fileInput.files[0]);
+//         }
+//     }
+// }
+    </script>
+</head>
+
+<section class="vh-20">
+    <div class="container py-5 h-80 " style="overflow-x: hidden; margin-top:-7em; margin-bottom:-2.9em;">
+      <div class="row d-flex justify-content-center align-items-center h-60" >
+        
+        <div class="col col-lg-6 mb-4 mb-lg-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block" style="margin-left:30%">
+                <img src="{% static 'assets/upload.gif' %}" alt="request_approval" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+            </div>
+
+            <div class="card mb-3" style="border-radius:.5rem; background-color: rgba(205, 222, 248, 0.865); ">
+              <div class="row g-0">
+                <div class="col-md-12">
+                  <div class="card-body p-4">
+                    <div class="heading" style="text-align: center;"><h3>Upload File</h3></div>
+                    <hr class="mt-0 mb-4">
+                    <div class="row pt-1">
+  
+                      <form method="post" autocomplete="on" action="{% url 'Upload Excel' ExamID %}" enctype="multipart/form-data">
+
+                        <div class="form-input">
+                          <label>Upload an Excel Sheet</label>
+                          <input type="file" name="myfile" class="form-control"  id="file" style="text-align: center;" required />
+                        </div><br>
+
+                        <div style="display:flex; justify-content: space-around;">
+                          <div style="display:flex; justify-content: left; margin-left: 2em;">
+                            <a class="btn btn-primary btn-md" href="{% url 'Create Exam Page' ExamID %}"><span><b>Back <<</b></span></a>
+                          </div>
+
+                          <div><a href="" class="lgbtn" >
+                            <button type="submit" id="upload" name="upload" class="btn btn-success btn-md">Upload</button>
+                          </a></div>
+                        </div>
+                        <div id="flash" style="color: red;font-size: 1.1rem;text-align:center;font-family: var(--Snigle-font);">
+                          {% if messages %}
+                              {% for message in messages %}
+                                  <div class="alert alert-{{ message.tags }} m-0" role="alert">
+                                          {{ message }}
+                                  </div>
+                              {% endfor %}
+                          {% endif %}
+                      </div>
+                      </form>  
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+
+{% endblock %}
